@@ -12,7 +12,7 @@ def getitem(M, k):
     """
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
 
-    return M[0][k[0]][k[1]]
+    return M.store[k[0]][k[1]]
 
 
 
