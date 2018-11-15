@@ -11,7 +11,10 @@ def getitem(M, k):
     3
     """
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
-    pass
+
+    return M[0][k[0]][k[1]]
+
+
 
 
 def equal(A, B):
