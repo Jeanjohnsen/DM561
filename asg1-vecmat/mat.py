@@ -10,6 +10,7 @@ def getitem(M, k):
     >>> M[1,2]
     3
     """
+
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
 
     return M.store[k[0]][k[1]]
@@ -35,8 +36,15 @@ def equal(A, B):
     >>> A == Mat([[1,2,3],[1,2,3]])
     True
     """
+
     assert A.size == B.size
-    pass
+    
+    for AStore, BStore in zip(A.store, B.store):
+        for AVal, BVal in zip(AStore, BStore):
+            if (AVal != BVal):
+                return False
+    
+    return True
 
 
 def setitem(M, k, val):
