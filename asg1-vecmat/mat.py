@@ -47,6 +47,8 @@ def equal(A, B):
     return True
 
 
+
+
 def setitem(M, k, val):
     """
     Set entry k of Mat M to val, where k is a 2-tuple.
@@ -57,7 +59,8 @@ def setitem(M, k, val):
     True
     """
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
-    pass
+
+    
 
 
 def add(A, B):
