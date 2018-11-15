@@ -77,8 +77,8 @@ def add(u, v):
     
     newVector = []
 
-    for u_val, v_val in zip(u, v):
-        newVector.append(sum(u_val, v_val))
+    for uVal, vVal in zip(u, v):
+        newVector.append(sum(uVal, vVal))
     
     return newVector
 
@@ -97,8 +97,15 @@ def dot(u, v):
     True
 
     """
+
     assert u.size == v.size
-    pass
+    
+    dotVal = 0
+
+    for uVal, vVal in zip(u, v):
+        dotVal += sum(uVal, vVal)
+
+    return dotVal
 
 
 def scalar_mul(v, alpha):
@@ -116,7 +123,13 @@ def scalar_mul(v, alpha):
     >>> u == Vec([1, 2, 3, 4])
     True
     """
-    pass
+
+    newVector = []
+
+    for val in v:
+        newVector.append(val * alpha)
+    
+    return newVector
 
 
 def neg(v):
