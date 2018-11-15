@@ -58,9 +58,10 @@ def setitem(M, k, val):
     >>> M == Mat([[1,0,3],[1,2,0]])
     True
     """
+
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
 
-    
+    M.store[k[0]][k[1]] = val
 
 
 def add(A, B):
@@ -80,8 +81,21 @@ def add(A, B):
     >>> B + zero == B
     True
     """
+
     assert A.size == B.size
-    pass
+    
+    newMatrice = Mat([[0 for y in range(A.size[1])] for x in range(A.size[0])])
+
+    row = 0
+    column = 0
+
+    for AStore, BStore in zip(A.store, B.store):
+        for AVal, BVal in zip(AStore, BStore):
+            setitem(newMatrice, (row, column), sum(AVal, BVal))
+            row += 1
+        column += 1
+    
+    return newMatrice
 
 
 def scalar_mul(M, x):
