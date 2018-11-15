@@ -34,7 +34,8 @@ def setitem(v, k, val):
     0
     """
     assert k in range(v.size)
-    pass
+
+    v[k] = val
 
 
 def equal(u, v):
