@@ -1,0 +1,377 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Grade: 0.00/100.00
+
+12 Deduction(s):
+
+- --------------
+#1: 8.00 points
+Failing test: test_mat_equal: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 123, in test_mat_equal
+    self.assertTrue(Mat(M.tolist())==Mat(N.tolist()))
+AssertionError: None is not true
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_equal(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,30))
+         N = M
+ 
+         self.assertTrue(Mat(M.tolist())==Mat(N.tolist()))
+- --------------
+
+- --------------
+#2: 8.00 points
+Failing test: test_vec_dot: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 100, in test_vec_dot
+    self.assertEqual(Vec(u.tolist()) * Vec(v.tolist()),   xpct_Vec(u.tolist()) * xpct_Vec(v.tolist()))
+AssertionError: None != 6694
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_vec_dot(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         u = np.random.randint(10, 20, (30))
+         v = np.random.randint(10, 20, (30))
+ 
+         self.assertEqual(Vec(u.tolist()) * Vec(v.tolist()),   xpct_Vec(u.tolist()) * xpct_Vec(v.tolist()))
+- --------------
+
+- --------------
+#3: 12.00 points
+Failing test: test_vec_equal: 
+        We specify the point value for each test in the method comment string:
+        @points=12
+        
+Traceback (most recent call last):
+  File "test_asg1.py", line 64, in test_vec_equal
+    self.assertTrue(Vec(u.tolist())==Vec(v.tolist()))
+AssertionError: None is not true
+
+source:
+    def test_vec_equal(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=12
+         """
+         u = np.random.randint(10, 20, (30))
+         v = u
+ 
+         self.assertTrue(Vec(u.tolist())==Vec(v.tolist()))
+- --------------
+
+- --------------
+#4: 8.00 points
+Failing test: test_mat_add: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 135, in test_mat_add
+    self.assertEqual(Mat(M.tolist()) + Mat(N.tolist()),   xpct_Mat(M.tolist()) + xpct_Mat(N.tolist()))
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 819, in _baseAssertEqual
+    if not first == second:
+  File "/home/tester/shared/grading/mat_sol.py", line 36, in equal
+    assert A.size == B.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_add(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         N = np.random.randint(10, 20, (30,20))
+ 
+         self.assertEqual(Mat(M.tolist()) + Mat(N.tolist()),   xpct_Mat(M.tolist()) + xpct_Mat(N.tolist()))
+- --------------
+
+- --------------
+#5: 8.00 points
+Failing test: test_mat_matrix_matrix_mult_small: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 195, in test_mat_matrix_matrix_mult_small
+    self.assertEqual( Mat(M.tolist()) * Mat(N.tolist()),  xpct_Mat(M.dot(N).tolist()) )
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 819, in _baseAssertEqual
+    if not first == second:
+  File "/home/tester/shared/grading/mat_sol.py", line 36, in equal
+    assert A.size == B.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_matrix_matrix_mult_small(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         N = np.random.randint(10, 20, (20,40))
+         self.assertEqual( Mat(M.tolist()) * Mat(N.tolist()),  xpct_Mat(M.dot(N).tolist()) )
+- --------------
+
+- --------------
+#6: 8.00 points
+Failing test: test_mat_matrix_vector_mult: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 184, in test_mat_matrix_vector_mult
+    self.assertTrue( self.equal(xpct_res,std_res) )
+  File "test_asg1.py", line 44, in equal
+    return M.size== N.size and M.store==N.store
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_matrix_vector_mult(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         v = np.random.randint(10, 20, 20)
+ 
+         std_res = Mat(M.tolist()) * Vec(v.tolist())
+         xpct_res = xpct_Vec(M.dot(v).tolist())
+         self.assertTrue( self.equal(xpct_res,std_res) )
+- --------------
+
+- --------------
+#7: 8.00 points
+Failing test: test_mat_scalar_mult: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 146, in test_mat_scalar_mult
+    self.assertEqual(10 * Mat(M.tolist()),  10 * xpct_Mat(M.tolist()) )
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 819, in _baseAssertEqual
+    if not first == second:
+  File "/home/tester/shared/grading/mat_sol.py", line 36, in equal
+    assert A.size == B.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_scalar_mult(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+ 
+         self.assertEqual(10 * Mat(M.tolist()),  10 * xpct_Mat(M.tolist()) )
+- --------------
+
+- --------------
+#8: 8.00 points
+Failing test: test_mat_transpose: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 157, in test_mat_transpose
+    self.assertEqual( Mat(M.tolist()).transpose(),  xpct_Mat(M.T.tolist()) )
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 819, in _baseAssertEqual
+    if not first == second:
+  File "/home/tester/shared/grading/mat_sol.py", line 36, in equal
+    assert A.size == B.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_transpose(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+ 
+         self.assertEqual( Mat(M.tolist()).transpose(),  xpct_Mat(M.T.tolist()) )
+- --------------
+
+- --------------
+#9: 8.00 points
+Failing test: test_mat_vector_matrix_mult: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 171, in test_mat_vector_matrix_mult
+    self.assertTrue( self.equal(std_res, xpct_res) )
+  File "test_asg1.py", line 44, in equal
+    return M.size== N.size and M.store==N.store
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_vector_matrix_mult(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         u = np.random.randint(10, 20, 30)
+         std_res = Vec(u.tolist()) * Mat(M.tolist())
+         xpct_res = xpct_Vec(u.dot(M).tolist())
+ 
+         self.assertTrue( self.equal(std_res, xpct_res) )
+- --------------
+
+- --------------
+#10: 8.00 points
+Failing test: test_vec_add: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 76, in test_vec_add
+    self.assertEqual(Vec(u.tolist()) + Vec(v.tolist()),   xpct_Vec(u.tolist()) + xpct_Vec(v.tolist()))
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 819, in _baseAssertEqual
+    if not first == second:
+  File "/home/tester/shared/grading/vec_sol.py", line 50, in equal
+    assert v.size == u.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_vec_add(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         u = np.random.randint(10, 20, (30))
+         v = np.random.randint(10, 20, (30))
+ 
+         self.assertEqual(Vec(u.tolist()) + Vec(v.tolist()),   xpct_Vec(u.tolist()) + xpct_Vec(v.tolist()))
+- --------------
+
+- --------------
+#11: 8.00 points
+Failing test: test_vec_scalar_mult: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 111, in test_vec_scalar_mult
+    self.assertEqual(10 * Vec(u.tolist()),  10 * xpct_Vec(u.tolist()) )
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 819, in _baseAssertEqual
+    if not first == second:
+  File "/home/tester/shared/grading/vec_sol.py", line 50, in equal
+    assert v.size == u.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_vec_scalar_mult(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         u = np.random.randint(10, 20, (30))
+ 
+         self.assertEqual(10 * Vec(u.tolist()),  10 * xpct_Vec(u.tolist()) )
+- --------------
+
+- --------------
+#12: 8.00 points
+Failing test: test_vec_sub: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 88, in test_vec_sub
+    self.assertEqual(Vec(u.tolist()) - Vec(v.tolist()),   xpct_Vec(u.tolist()) - xpct_Vec(v.tolist()))
+  File "students/kanis16-repo/asg1-vecmat/vec.py", line 159, in __sub__
+    return a+(-b)
+  File "students/kanis16-repo/asg1-vecmat/vec.py", line 66, in add
+    assert u.size == v.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_vec_sub(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         u = np.random.randint(10, 20, (30))
+         v = np.random.randint(10, 20, (30))
+ 
+         self.assertEqual(Vec(u.tolist()) - Vec(v.tolist()),   xpct_Vec(u.tolist()) - xpct_Vec(v.tolist()))
+- --------------
+
+
+Metadata
+===================
+Assignment: asg1-vecmat
+Repo: ssh://git@git.imada.sdu.dk/DM561-DM562-2018/kanis16-repo
+Timestamp: 1542283261.5677607
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJb7V/9AAoJEKiHxn3oWX95NF0IAM7n03NaAGBpMeEmktHziBZd
+hFp0w8mdD6DYsVfEgis072okGILh4a5AEh4ykOYTfwaPELSKA0DH3n11Eu/p3Fy9
+pOcicqX7ht2VCeFiKUpYgeYfs/Hg6hdurWCeHIaGWxljPUeOj8Pu2shRm+ID4nSv
+lKyQh6PqmlItH2Tr/jsGWRJqWkgrdHAFsxTNvPkMICF3XTvpyHEPmMGQ8qeWvHUB
+aZD0bCM2FMU8I4mE7/aJe/D91Lc+FEr9x7OiOx6r0aKIWAMhgR0PdzHK/bO45TDT
+6s8yrsaeCW84hdYMcy5rfzftZ8aPMk8XGeDPXDYUX5xtdGqxfURgXNf201rWrEs=
+=wUU0
+-----END PGP SIGNATURE-----
