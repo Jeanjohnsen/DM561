@@ -38,12 +38,12 @@ def equal(A, B):
     """
 
     assert A.size == B.size
-    
+
     for AStore, BStore in zip(A.store, B.store):
         for AVal, BVal in zip(AStore, BStore):
             if (AVal != BVal):
                 return False
-    
+
     return True
 
 
@@ -60,7 +60,7 @@ def setitem(M, k, val):
     """
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
 
-    
+
 
 
 def add(A, B):
@@ -96,7 +96,23 @@ def scalar_mul(M, x):
     >>> 0.25*M == Mat([[0.25,0.25,0.25],[0.5,0.5,0.5]])
     True
     """
-    pass
+
+    result = []
+
+    for i in range (len(M.store)):
+
+        row = []
+
+        for j in range(len(M.store)):
+
+            scalarProduct = 0
+            for x in range (len(M.store[i])):
+                scalarProduct += M.store[i][x] * M.store[x][j]
+            row.append(scalarProduct)
+
+        result.append(row)
+
+    return result
 
 
 def transpose(M):
