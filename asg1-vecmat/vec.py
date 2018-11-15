@@ -10,8 +10,10 @@ def getitem(v, k):
     >>> v[0]
     1
     """
+
     assert k in range(v.size)
-    pass
+
+    return v[k]
 
 
 def setitem(v, k, val):
