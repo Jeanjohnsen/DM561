@@ -80,7 +80,7 @@ def add(u, v):
     for uVal, vVal in zip(u, v):
         newVector.append(sum(uVal, vVal))
     
-    return newVector
+    return Vec(newVector)
 
 
 def dot(u, v):
@@ -129,7 +129,7 @@ def scalar_mul(v, alpha):
     for val in v:
         newVector.append(val * alpha)
     
-    return newVector
+    return Vec(newVector)
 
 
 def neg(v):
@@ -150,7 +150,7 @@ def neg(v):
     for val in v:
         newVector.append(-val)
     
-    return newVector
+    return Vec(newVector)
 
 
 ###############################################################################################################################
