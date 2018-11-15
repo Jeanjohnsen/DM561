@@ -1,6 +1,5 @@
 from vec import Vec
 
-
 def getitem(M, k):
     """
     Returns the value of entry k in M, where k is a 2-tuple of indices
@@ -61,11 +60,7 @@ def setitem(M, k, val):
 
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
 
-<<<<<<< HEAD
-
-=======
     M.store[k[0]][k[1]] = val
->>>>>>> d194b10f7506b46669b3d37f3de63ef0f2e9c074
 
 
 def add(A, B):
@@ -115,6 +110,7 @@ def scalar_mul(M, x):
     True
     """
 
+    """
     result = []
 
     for i in range (len(M.store)):
@@ -131,6 +127,20 @@ def scalar_mul(M, x):
         result.append(row)
 
     return result
+    """
+
+    newMatrice = Mat([[0 for y in range(M.size[1]] for x in range(M.size[0])])
+
+    row = 0
+    column = 0
+
+    for MStore in M.store:
+        for MVal in MStore:
+            getitem(newMatrice, (row, column), MVal * x)
+            row += 1
+        column += 1
+    
+    return newMatrice
 
 
 def transpose(M):
