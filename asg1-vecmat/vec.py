@@ -33,6 +33,7 @@ def setitem(v, k, val):
     >>> v[1]
     0
     """
+
     assert k in range(v.size)
 
     v[k] = val
@@ -48,8 +49,13 @@ def equal(u, v):
     True
 
     """
+
     assert v.size == u.size
-    pass
+    
+    if u.store == v.store:
+        return True
+    
+    return False
 
 
 def add(u, v):
@@ -66,8 +72,15 @@ def add(u, v):
     >>> b == Vec([1, 1, 1])
     True
     """
+
     assert u.size == v.size
-    pass
+    
+    newVector = []
+
+    for u_val, v_val in zip(u, v):
+        newVector.append(sum(u_val, v_val))
+    
+    return newVector
 
 
 def dot(u, v):
