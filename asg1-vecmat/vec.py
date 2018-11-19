@@ -77,9 +77,8 @@ def add(u, v):
     
     newVector = Vec([0 for i in range(u.size)])
 
-    for index in range(u.size):
-        for uVal, vVal in zip(u, v):
-            newVector.store[index] = sum(uVal, vVal)
+    for index, uVal, vVal in zip(range(u.size), u, v):
+        newVector.store[index] = sum(uVal, vVal)
         
     return newVector
 
@@ -96,7 +95,6 @@ def dot(u, v):
     True
     >>> u2 == Vec([1, 2])
     True
-
     """
 
     assert u.size == v.size
@@ -104,7 +102,7 @@ def dot(u, v):
     dotVal = 0
 
     for uVal, vVal in zip(u, v):
-        dotVal += sum(uVal, vVal)
+        dotVal += uVal * vVal
 
     return dotVal
 
@@ -125,12 +123,12 @@ def scalar_mul(v, alpha):
     True
     """
 
-    newVector = []
+    newVector = Vec(range(v.size))
 
-    for val in v:
-        newVector.append(val * alpha)
+    for index, val in zip(range(v.size), v):
+        newVector.store[index] = val * alpha
     
-    return Vec(newVector)
+    return newVector
 
 
 def neg(v):
