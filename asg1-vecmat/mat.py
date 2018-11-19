@@ -244,15 +244,7 @@ def matrix_matrix_mul(A, B):
 
     dotVal = 0
 
-    for rowIndex, ARow in zip(range(A.size[0]), A.store):
-        for columnIndex in range(B.size[1]):
-            for BRow in B.store:
-                dotVal += BRow[columnIndex] * ARow[columnIndex]
-            newMatrice[rowIndex, columnIndex] = dotVal
-            dotVal = 0
-    
-    return newMatrice
-        
+    # brug transponering!       
 
 
 
