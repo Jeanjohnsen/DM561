@@ -1,5 +1,6 @@
 from vec import Vec
 
+
 def getitem(M, k):
     """
     Returns the value of entry k in M, where k is a 2-tuple of indices
@@ -60,7 +61,9 @@ def setitem(M, k, val):
 
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
 
+
     M.store[k[0]][k[1]] = val
+
 
 
 def add(A, B):
@@ -82,7 +85,7 @@ def add(A, B):
     """
 
     assert A.size == B.size
-    
+
     newMatrice = Mat([[0 for y in range(A.size[1])] for x in range(A.size[0])])
 
     row = 0
@@ -93,7 +96,7 @@ def add(A, B):
             setitem(newMatrice, (row, column), sum(AVal, BVal))
             row += 1
         column += 1
-    
+
     return newMatrice
 
 
@@ -110,7 +113,6 @@ def scalar_mul(M, x):
     True
     """
 
-    """
     result = []
 
     for i in range (len(M.store)):
@@ -127,20 +129,6 @@ def scalar_mul(M, x):
         result.append(row)
 
     return result
-    """
-
-    newMatrice = Mat([[0 for y in range(M.size[1]] for x in range(M.size[0])])
-
-    row = 0
-    column = 0
-
-    for MStore in M.store:
-        for MVal in MStore:
-            setitem(newMatrice, (row, column), MVal * x)
-            row += 1
-        column += 1
-    
-    return newMatrice
 
 
 def transpose(M):
@@ -151,19 +139,7 @@ def transpose(M):
     >>> M.transpose() == Mat([[1,1],[2,2],[3,3]])
     True
     """
-    
-    newMatrice = Mat([[0 for y in range(M.size[0])] for x in range(M.size[1])])
-
-    row = 0
-    column = 0
-
-    for MStore in M.store:
-        for MVal in MStore:
-            setitem(newMatrice, (column, row), MVal)
-            row += 1
-        column += 1
-
-    return newMatrice
+    pass
 
 
 def vector_matrix_mul(v, M):
@@ -196,24 +172,8 @@ def matrix_vector_mul(M, v):
     >>> u1 == Vec([3,2,1])
     True
     """
-
     assert M.size[1] == v.size
-
-    newVector = Vec([0 for x in range(M.size[1])])
-
-    row = 0
-
-    tempVal = 0
-
-    for matRow in M.store:
-        for matVal, vecVal in zip(matRow, v.store):
-            tempVal += matVal * vecVal
-        newVector.store[row] = tempVal
-
-        tempVal = 0
-        row += 1
-    
-    return newVector
+    pass
 
 
 def matrix_matrix_mul(A, B):
@@ -236,7 +196,24 @@ def matrix_matrix_mul(A, B):
     True
     """
     assert A.size[1] == B.size[0]
-    pass
+
+    row_A = len(A.store)
+    col_A = len(A.store[0])
+    row_B = len(B.store)
+    col_B = len(B.store[0])
+
+    newMatrix = Mat([[0 for row in range(col_B)] for col in range(row_A)])
+
+    for i in range(row_A):
+        for j in range(col_B):
+            for k in range(col_A):
+                newMatrix[i][j] += A[i][k] * B[k][j]
+
+    return newMatrix
+
+
+
+
 
 ################################################################################
 
