@@ -78,7 +78,7 @@ def add(u, v):
     newVector = Vec(range(u.size))
 
     for index, uVal, vVal in zip(range(u.size), u.store, v.store):
-        newVector.store[index] = sum(uVal, vVal)
+        newVector.store[index] = uVal + vVal
         
     return newVector
 
