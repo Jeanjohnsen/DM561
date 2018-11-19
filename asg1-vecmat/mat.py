@@ -136,7 +136,7 @@ def scalar_mul(M, x):
 
     for MStore in M.store:
         for MVal in MStore:
-            getitem(newMatrice, (row, column), MVal * x)
+            setitem(newMatrice, (row, column), MVal * x)
             row += 1
         column += 1
     
@@ -151,8 +151,19 @@ def transpose(M):
     >>> M.transpose() == Mat([[1,1],[2,2],[3,3]])
     True
     """
-    pass
+    
+    newMatrice = Mat([[0 for y in range(M.size[0])] for x in range(M.size[1])])
 
+    row = 0
+    column = 0
+
+    for MStore in M.store:
+        for MVal in MStore:
+            setitem(newMatrice, (column, row), MVal)
+            row += 1
+        column += 1
+
+    return newMatrice
 
 def vector_matrix_mul(v, M):
     """
