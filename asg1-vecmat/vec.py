@@ -13,7 +13,7 @@ def getitem(v, k):
 
     assert k in range(v.size)
 
-    return v[k]
+    return v.store[k]
 
 
 def setitem(v, k, val):
@@ -36,7 +36,7 @@ def setitem(v, k, val):
 
     assert k in range(v.size)
 
-    v[k] = val
+    v.store[k] = val
 
 
 def equal(u, v):
@@ -75,12 +75,13 @@ def add(u, v):
 
     assert u.size == v.size
     
-    newVector = []
+    newVector = Vec([0 for i in range(u.size)])
 
-    for uVal, vVal in zip(u, v):
-        newVector.append(sum(uVal, vVal))
-    
-    return Vec(newVector)
+    for index in range(u.size):
+        for uVal, vVal in zip(u, v):
+            newVector.store[index] = sum(uVal, vVal)
+        
+    return newVector
 
 
 def dot(u, v):
