@@ -165,6 +165,7 @@ def transpose(M):
 
     return newMatrice
 
+
 def vector_matrix_mul(v, M):
     """
     returns the product of vector v and matrix M
@@ -195,8 +196,24 @@ def matrix_vector_mul(M, v):
     >>> u1 == Vec([3,2,1])
     True
     """
+
     assert M.size[1] == v.size
-    pass
+
+    newVector = Vec([0 for x in range(M.size[1])])
+
+    row = 0
+
+    tempVal = 0
+
+    for matRow in M.store:
+        for matVal, vecVal in zip(matRow, v.store):
+            tempVal += matVal * vecVal
+        newVector.store[row] = tempVal
+
+        tempVal = 0
+        row += 1
+    
+    return newVector
 
 
 def matrix_matrix_mul(A, B):
