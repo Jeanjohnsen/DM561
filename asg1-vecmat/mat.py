@@ -133,7 +133,14 @@ def transpose(M):
     >>> M.transpose() == Mat([[1,1],[2,2],[3,3]])
     True
     """
-    pass
+
+    newMatrice = Mat([range(M.size[0]) for rows in range(M.size[1])])
+
+    for rowIndex, MRow in zip(range(M.size[0]), M.store):
+        for columnIndex, MColVal in zip(range(M.size[1]), MRow):
+            newMatrice[columnIndex, rowIndex] = MColVal
+
+    return newMatrice
 
 
 def vector_matrix_mul(v, M):
