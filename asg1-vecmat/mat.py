@@ -39,9 +39,9 @@ def equal(A, B):
 
     assert A.size == B.size
 
-    for AStore, BStore in zip(A.store, B.store):
-        for AVal, BVal in zip(AStore, BStore):
-            if (AVal != BVal):
+    for ARow, BRow in zip(A.store, B.store):
+        for AColVal, BColVal in zip(ARow, BRow):
+            if (AColVal != BColVal):
                 return False
 
     return True
@@ -53,14 +53,13 @@ def setitem(M, k, val):
     """
     Set entry k of Mat M to val, where k is a 2-tuple.
     >>> M = Mat([[1,2,3],[1,2,3]])
-    >>> M[0, 1] = 0
+    >>> M[0,1] = 0
     >>> M[1,2] = 0
     >>> M == Mat([[1,0,3],[1,2,0]])
     True
     """
 
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
-
 
     M.store[k[0]][k[1]] = val
 
@@ -86,16 +85,11 @@ def add(A, B):
 
     assert A.size == B.size
 
-    newMatrice = Mat([[0 for y in range(A.size[1])] for x in range(A.size[0])])
+    newMatrice = Mat([range(A.size[1]) for rows in range(A.size[0])])
 
-    row = 0
-    column = 0
-
-    for AStore, BStore in zip(A.store, B.store):
-        for AVal, BVal in zip(AStore, BStore):
-            setitem(newMatrice, (row, column), sum(AVal, BVal))
-            row += 1
-        column += 1
+    for rowIndex, ARow, BRow in zip(range(A.size[0]), A.store, B.store):
+        for columnIndex, AColVal, BColVal in zip(range(A.size[1]), ARow, BRow):
+            newMatrice[rowIndex, columnIndex] = AColVal + BColVal
 
     return newMatrice
 
