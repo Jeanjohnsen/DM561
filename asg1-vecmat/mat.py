@@ -107,6 +107,7 @@ def scalar_mul(M, x):
     True
     """
 
+    """
     result = []
 
     for i in range (len(M.store)):
@@ -123,6 +124,15 @@ def scalar_mul(M, x):
         result.append(row)
 
     return result
+    """
+
+    newMatrice = Mat([range(M.size[1]) for rows in range(M.size[0])])
+
+    for rowIndex, MRow in zip(range(M.size[0]), M.store):
+        for columnIndex, MColVal in zip(range(M.size[1]), MRow):
+            newMatrice[rowIndex, columnIndex] = MColVal * x
+
+    return newMatrice
 
 
 def transpose(M):
@@ -173,8 +183,23 @@ def matrix_vector_mul(M, v):
     >>> u1 == Vec([3,2,1])
     True
     """
+    
     assert M.size[1] == v.size
-    pass
+    
+    newVector = Vec(range(M.size[0]))
+
+    tempVal = 0
+
+    # rowIndex is the index for the current row we are sorting through in the matrix,
+    # as well as the target index for newVector
+    for rowIndex, MRow in zip(range(M.size[0]), M.store):
+        for columnIndex, MColVal in zip(range(M.size[1]), MRow):
+            tempVal += MColVal * v[columnIndex]
+        
+        newVector.store[rowIndex] = tempVal
+        tempVal = 0
+    
+    return newVector
 
 
 def matrix_matrix_mul(A, B):
@@ -196,8 +221,10 @@ def matrix_matrix_mul(A, B):
     >>> F.transpose()*E.transpose() == Mat([[0,0],[5,15]])
     True
     """
+
     assert A.size[1] == B.size[0]
 
+    """
     row_A = len(A.store)
     col_A = len(A.store[0])
     row_B = len(B.store)
@@ -211,8 +238,21 @@ def matrix_matrix_mul(A, B):
                 newMatrix[i][j] += A[i][k] * B[k][j]
 
     return newMatrix
+    """
 
+    newMatrice = Mat([range(A.size[0]) for rows in range(B.size[1])])
 
+    dotVal = 0
+
+    for rowIndex, ARow in zip(range(A.size[0]), A.store):
+        for columnIndex in range(B.size[1]):
+            for BRow in B.store:
+                dotVal += BRow[columnIndex] * ARow[columnIndex]
+            newMatrice[rowIndex, columnIndex] = dotVal
+            dotVal = 0
+    
+    return newMatrice
+        
 
 
 
