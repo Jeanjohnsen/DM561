@@ -61,11 +61,9 @@ def setitem(M, k, val):
 
     assert k[0] in range(M.size[0]) and k[1] in range(M.size[1])
 
-<<<<<<< HEAD
 
-=======
     M.store[k[0]][k[1]] = val
->>>>>>> d194b10f7506b46669b3d37f3de63ef0f2e9c074
+
 
 
 def add(A, B):
@@ -87,7 +85,7 @@ def add(A, B):
     """
 
     assert A.size == B.size
-    
+
     newMatrice = Mat([[0 for y in range(A.size[1])] for x in range(A.size[0])])
 
     row = 0
@@ -98,7 +96,7 @@ def add(A, B):
             setitem(newMatrice, (row, column), sum(AVal, BVal))
             row += 1
         column += 1
-    
+
     return newMatrice
 
 
@@ -115,22 +113,17 @@ def scalar_mul(M, x):
     True
     """
 
-    result = []
+    __result__ = []
 
     for i in range (len(M.store)):
-
         row = []
-
         for j in range(len(M.store)):
-
             scalarProduct = 0
             for x in range (len(M.store[i])):
                 scalarProduct += M.store[i][x] * M.store[x][j]
             row.append(scalarProduct)
-
         result.append(row)
-
-    return result
+    return __result__
 
 
 def transpose(M):
@@ -198,7 +191,24 @@ def matrix_matrix_mul(A, B):
     True
     """
     assert A.size[1] == B.size[0]
-    pass
+
+    row_A = len(A.store)
+    col_A = len(A.store[0])
+    row_B = len(B.store)
+    col_B = len(B.store[0])
+
+    newMatrix = Mat([[0 for row in range(col_B)] for col in range(row_A)])
+
+    for i in range(row_A):
+        for j in range(col_B):
+            for k in range(col_A):
+                newMatrix[i][j] += A.store[i][k] * B.store[k][j]
+
+    return newMatrix
+
+
+
+
 
 ################################################################################
 
