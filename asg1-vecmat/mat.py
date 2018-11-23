@@ -244,6 +244,14 @@ def matrix_matrix_mul(A, B):
 
     dotVal = 0
 
+    tempB = B.transpose
+
+    for rowIndex, ARow, BRow in zip(range(A.size[0]), A.store, tempB.store):
+        for columnIndex, AColVal, BColVal in zip(A.size[1], ARow, BRow):
+            dotVal += AColVal * BColVal
+        
+
+
     # brug transponering!       
 
 
