@@ -68,12 +68,24 @@ def isPermutationMatrix(matrix):
     True
     """
 
-    # keeps track of the amount of 1's in each row/column (not yet decided)
-    isPermutationMatrixTracker = []
+    if (len(matrix.shape) != 2):
+        raise TypeError("Arg: 'matrix' is not a two-dimensional np.ndarray.")
 
+<<<<<<< HEAD
 
 
     pass
+=======
+    if (matrix.shape[0] != matrix.shape[1]):
+        raise TypeError("Arg: 'matrix' is not a squared np.ndarray.")
+    
+    for axis in range(2):
+        for index in range(matrix.shape[0]):
+            if (np.sum(np.take(matrix, index, axis=axis)) != 1):
+                return False
+    
+    return True
+>>>>>>> fa9667a9d6129dd46a28e76ed486d6f0145a3bf1
 
 def allPermutationMatrices(n):
     """
