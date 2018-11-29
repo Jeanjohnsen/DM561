@@ -7,7 +7,7 @@ are necessary for using graphs in algorithmics and modelling. Such
 implementations essentially lie at the very core of the endless
 application scenarios. We intentionally will give most of the points for
 the easier functions to be implemented. For those who like the
-challenge are however also some more complicated tasks. 
+challenge are however also some more complicated tasks.
 
 If not mentioned otherwise, all adjacency matrices in this assignment
 are for unweighted graphs i.e., all elements in the adjacency matrices
@@ -23,19 +23,21 @@ python3 asg2.py
 
 Note that the unit tests for the final grading may contain different tests,
 and that certain requirements given below are not tested in the testing
-period before the final testing. Also the pointing scheme might change. 
-Furthermore, the tests might be changed or additional test might be 
-introduced during the testing period before the final deadline, to give 
+period before the final testing. Also the pointing scheme might change.
+Furthermore, the tests might be changed or additional test might be
+introduced during the testing period before the final deadline, to give
 you additional/different feedback.
 
 """
 
 import numpy as np
+from sympy.utilities.iterables import multiset_permutations
+from itertools import permutations
 
 def isPermutationMatrix(matrix):
     """
     Returns true if matrix is a square permutation matrix.
-    matrix is expected to be an instance of np.ndarray 
+    matrix is expected to be an instance of np.ndarray
 
     Parameters
     ----------
@@ -44,7 +46,7 @@ def isPermutationMatrix(matrix):
                            which formally is a function that creates an ndarray.
                            Still, the convention is to use np.array when creating
                            arrays (see example below).
-    
+
     Returns
     -------
     bool
@@ -54,13 +56,13 @@ def isPermutationMatrix(matrix):
     Raises
     ------
     TypeError
-        if A is not a two-dimensional squared np.ndarray 
+        if A is not a two-dimensional squared np.ndarray
     ValueError
         if at least one of the entries in A is not integer 0 or 1
 
     Examples
     --------
-    
+
     >>> A = np.array([[0,1,0],[1,0,0],[0,0,1]])
     >>> isPermutationMatrix(A)
     True
@@ -69,13 +71,13 @@ def isPermutationMatrix(matrix):
     # keeps track of the amount of 1's in each row/column (not yet decided)
     isPermutationMatrixTracker = []
 
-    
+
 
     pass
 
 def allPermutationMatrices(n):
     """
-    Returns a list of all permutation matrices of size n x n. 
+    Returns a list of all permutation matrices of size n x n.
 
     Parameters
     ----------
@@ -83,12 +85,12 @@ def allPermutationMatrices(n):
 
     Returns
     -------
-    list: A list of all possible permutation matrices of size n x n. 
+    list: A list of all possible permutation matrices of size n x n.
           Each entry should be an 2-dimesnional np.ndarray of ints
 
     Raises
     -------
-    ValueError: if n<=0 
+    ValueError: if n<=0
 
     Examples
     --------
@@ -98,7 +100,11 @@ def allPermutationMatrices(n):
            [1, 0]])]
     """
 
-    pass
+    pms = set()
+    for p in allPermutationMatrices(2):
+        pms.add(p)
+
+    return pms
 
 def isIsomorphicUsingP(A, B, P):
     """
@@ -119,7 +125,7 @@ def isIsomorphicUsingP(A, B, P):
     Raises
     -------
     ValueError: if the dimensions of A, B, and P are not identical
-    TypeError: if P is not a permutation matrix 
+    TypeError: if P is not a permutation matrix
 
 
     Examples:
@@ -129,9 +135,8 @@ def isIsomorphicUsingP(A, B, P):
     >>> P = np.array([[0, 1, 0], [1, 0, 0], [0, 0, 1]])
     >>> isIsomorphicUsingP(A, B, P)
     True
-    
-    """
 
+    """
     pass
 
 def numIsomorphisms(A, B):
@@ -147,7 +152,7 @@ def numIsomorphisms(A, B):
     Returns:
     --------
     int : see above
-    
+
     Examples:
     ---------
     >>> A = np.array([[0, 1, 1], [1, 0, 1], [1, 1, 0]])
@@ -173,7 +178,7 @@ def moreThanOneSubgraph(A, B):
     Of course, this assumes that the "best" solution(s) will not "cheat" by using
     existing methods from imported modules. The best solution(s) will be the one(s)
     that can solve the largest of the test instances within 10 seconds and without
-    using any imported modules other than numpy. For the testing, the host graph (B) 
+    using any imported modules other than numpy. For the testing, the host graph (B)
     will have approx. twice as many nodes as the subgraph (A).
 
     What you probably learn by trying is: usually it _is_ indeed a very
@@ -181,8 +186,8 @@ def moreThanOneSubgraph(A, B):
 
     Time Limit:
     -----------
-    10 seconds 
-    
+    10 seconds
+
     Returns:
     --------
     True: if A can be found at least twice as a subgraph of B. (Note, A does
@@ -196,12 +201,12 @@ def moreThanOneSubgraph(A, B):
     -----------
     A, B : np.ndarray , two adjacency matrices, where the adjacency matrix of
            A represents a graph which has the same number or fewer vertices
-           as the graph represented by B. 
+           as the graph represented by B.
 
     Returns:
     --------
     True or False : see description above
-    
+
     Examples:
     ---------
     >>> A = np.array([[0, 1, 1], [1, 0, 0], [1, 0, 0]])
@@ -217,6 +222,3 @@ def moreThanOneSubgraph(A, B):
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-    
-    
-
