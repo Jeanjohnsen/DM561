@@ -31,7 +31,6 @@ you additional/different feedback.
 """
 
 import numpy as np
-from sympy.utilities.iterables import multiset_permutations
 from itertools import permutations
 
 def isPermutationMatrix(matrix):
@@ -68,24 +67,12 @@ def isPermutationMatrix(matrix):
     True
     """
 
-    if (len(matrix.shape) != 2):
-        raise TypeError("Arg: 'matrix' is not a two-dimensional np.ndarray.")
+    # keeps track of the amount of 1's in each row/column (not yet decided)
+    isPermutationMatrixTracker = []
 
-<<<<<<< HEAD
 
 
     pass
-=======
-    if (matrix.shape[0] != matrix.shape[1]):
-        raise TypeError("Arg: 'matrix' is not a squared np.ndarray.")
-    
-    for axis in range(2):
-        for index in range(matrix.shape[0]):
-            if (np.sum(np.take(matrix, index, axis=axis)) != 1):
-                return False
-    
-    return True
->>>>>>> fa9667a9d6129dd46a28e76ed486d6f0145a3bf1
 
 def allPermutationMatrices(n):
     """
@@ -111,9 +98,13 @@ def allPermutationMatrices(n):
            [0, 1]]), array([[0, 1],
            [1, 0]])]
     """
+    l = [
+        (1, 0),
+        (0, 1)
+    ]
 
     pms = set()
-    for p in allPermutationMatrices(2):
+    for p in permutations(l):
         pms.add(p)
 
     return pms
