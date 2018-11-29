@@ -105,6 +105,9 @@ def allPermutationMatrices(n):
            [1, 0]])]
     """
 
+    if (n <= 0):
+        raise ValueError("Arg: 'n' is lower or equal to 0.")
+
     baseArr = np.array(np.arange(0, n))
     variations = set(perm(baseArr))
 
