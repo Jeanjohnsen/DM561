@@ -152,7 +152,15 @@ def isIsomorphicUsingP(A, B, P):
 
     """
 
-    pass
+    if (not(A.shape == B.shape == P.shape)):
+        raise ValueError("The dimensions of the inputs are not identical.")
+    
+    if (not(isPermutationMatrix(P))):
+        raise TypeError("P is not a permutation matrix.")
+
+    newArr = np.dot(P, np.dot(P, B).T)
+
+    return np.array_equal(A, newArr)
 
 def numIsomorphisms(A, B):
     """
