@@ -188,7 +188,14 @@ def numIsomorphisms(A, B):
     0
     """
 
-    pass
+    permMatrices = allPermutationMatrices(A.shape[0])
+    isoCount = 0
+
+    for permMatrix in permMatrices:
+        if (isIsomorphicUsingP(A, B, permMatrix)):
+            isoCount += 1
+
+    return isoCount
 
 def moreThanOneSubgraph(A, B):
     """
