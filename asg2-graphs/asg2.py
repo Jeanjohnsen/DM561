@@ -104,19 +104,21 @@ def allPermutationMatrices(n):
            [0, 1]]), array([[0, 1],
            [1, 0]])]
     """
-    l = [
-        (1, 0),
-        (0, 1)
-    ]
 
-    pms = set()
-    for p in permutations(l):
-        pms.add(p)
-    
-    baseArr = np.array(np.arange(1, n + 1))
+    baseArr = np.array(np.arange(0, n))
     variations = set(perm(baseArr))
 
-    return pms
+    resultList = [None] * len(variations)
+
+    for resultListIndex, variation in zip(range(len(resultList)), variations):
+        newArr = np.zeros([n, n], dtype = np.int)
+
+        for y, x in zip(range(n), variation):
+            newArr[y, x] = 1
+        
+        resultList[resultListIndex] = newArr
+
+    return resultList
 
 def isIsomorphicUsingP(A, B, P):
     """
