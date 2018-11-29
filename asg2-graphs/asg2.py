@@ -112,6 +112,9 @@ def allPermutationMatrices(n):
     pms = set()
     for p in permutations(l):
         pms.add(p)
+    
+    baseArr = np.array(np.arange(1, n + 1))
+    variations = set(perm(baseArr))
 
     return pms
 
